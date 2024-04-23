@@ -4,6 +4,7 @@
         <ReactionTimer :imgs="imgs"/>
         <MotivationalQuotes name="Weston"/>
         <BrickGallery :imgs="imgs"/>
+        <CardSlider :imgs="imgs"/>
   </div>
 </template>
 
@@ -12,6 +13,7 @@ import MotivationalQuotes from '../components/MotivationalQuotes.vue'
 import ImageDisplay from '../components/ImageDisplay.vue'
 import ReactionTimer from '../components/ReactionTimer.vue'
 import BrickGallery from '../components/BrickGallery.vue'
+import CardSlider from '../components/CardSlider.vue'
 
 export default {
   name: 'App',
@@ -57,7 +59,8 @@ export default {
     MotivationalQuotes,
     ImageDisplay,
     ReactionTimer,
-    BrickGallery
+    BrickGallery,
+    CardSlider
   }
 }
 </script>
