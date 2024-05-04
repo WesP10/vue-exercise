@@ -1,12 +1,32 @@
 <template>
   <div id="body">
-    <div class="swiper-slide card" v-for="(img, index) in filteredImgs" :key="index">
-      <img :src="img.src" :alt="img.alt" />
-      <div class="overlay">
-        <span>{{ currentSlide }}</span>
-        <h2>{{ img.alt }}</h2>
+    <transition name="slide">
+      <div class="swiper-slide card">
+        <img :src="imgs[currentSlide].src" :alt="imgs[currentSlide].alt" :key="imgs[currentSlide].src"/>
+        <div class="overlay">
+          <span>{{ currentSlide }}</span>
+          <h2>{{ imgs[currentSlide].alt }}</h2>
+        </div>
       </div>
-    </div>
+    </transition>
+    <transition name="slide">
+      <div class="swiper-slide prev">
+        <img :src="imgs[prev].src" :alt="imgs[prev].alt" :key="imgs[prev].src"/>
+        <div class="overlay">
+          <span>{{ prev }}</span>
+          <h2>{{ imgs[prev].alt }}</h2>
+        </div>
+      </div>
+    </transition>
+    <transition name="slide">
+      <div class="swiper-slide next">
+        <img :src="imgs[next].src" :alt="imgs[next].alt" :key="imgs[next].src"/>
+        <div class="overlay">
+          <span>{{ next }}</span>
+          <h2>{{ imgs[next].alt }}</h2>
+        </div>
+      </div>
+    </transition>
     <div id="buttons">
       <button @click="incrSlide(-1)">Previous</button>
       <button @click="incrSlide(1)">Next</button>
@@ -22,33 +42,37 @@ export default {
   },
   data () {
     return {
-      currentSlide: 1
+      currentSlide: 0,
+      prev: this.imgs.length - 1,
+      next: 1
     }
   },
   methods: {
     incrSlide (incrAmount) {
       this.currentSlide += incrAmount
-      if (this.currentSlide < 1) this.currentSlide = this.imgs.length
-      else if (this.currentSlide > this.imgs.length) this.currentSlide = 1
-    }
-  },
-  computed: {
-    filteredImgs () {
-      return this.imgs
-        .map((img, index) => ({ img, index: index + 1 }))
-        .filter(({ index }) => {
-          return index === this.currentSlide ||
-            index === ((this.currentSlide + 1 - 1) % this.imgs.length) + 1 ||
-            index === ((this.currentSlide - 1 + this.imgs.length - 1) % this.imgs.length) + 1
-        })
-        .sort((a, b) => Math.abs(this.currentSlide - a.index) - Math.abs(this.currentSlide - b.index))
-        .map(({ img }) => img)
+      if (this.currentSlide < 0) this.currentSlide = this.imgs.length - 1
+      else if (this.currentSlide > this.imgs.length - 1) this.currentSlide = 0
+      this.prev = this.currentSlide - 1
+      if (this.prev < 0) this.prev = this.imgs.length - 1
+      else if (this.prev > this.imgs.length - 1) this.prev = 0
+      this.next = this.currentSlide + 1
+      if (this.next < 0) this.next = this.imgs.length - 1
+      else if (this.next > this.imgs.length - 1) this.next = 0
     }
   }
 }
 </script>
 
 <style scoped>
+.slide-enter-active, .slide-leave-active {
+  transition: opacity 0.5s;
+}
+.slide-enter {
+  opacity: 0;
+}
+.slide-leave-to {
+  opacity: 0.5;
+}
 #body {
   height: 300px;
 }
@@ -60,16 +84,43 @@ export default {
   border-radius: 20px;
   transition: transform 0.5s forwards;
 }
-.card:nth-child(1) {
+.card {
   z-index: 1;
+  animation: slide1 0.5s forwards;
 }
-.card:nth-child(3) {
+@keyframes slide1 {
+  0% {
+    transform: scale(0.7) translateY(-130%) translateX(-100%);
+  }
+  100% {
+    transform: scale(1) translateY(0) translateX(0);
+  }
+}
+.next {
   transform: scale(0.7) translateY(-272%) translateX(-100%);
   z-index: -1;
+  animation: slide2 0.5s forwards;
 }
-.card:nth-child(2) {
+@keyframes slide2 {
+  0% {
+    transform: scale(0.1) translateY(-80%) translateX(-150%);
+  }
+  100% {
+    transform: scale(0.7) translateY(-272%) translateX(-100%);
+  }
+}
+.prev {
   transform: scale(0.7) translateY(-130%) translateX(100%);
   z-index: -1;
+  animation: slide3 0.5s forwards;
+}
+@keyframes slide3 {
+  0% {
+    transform: scale(1) translateY(0) translateX(0);
+  }
+  100% {
+    transform: scale(0.7) translateY(-130%) translateX(100%);
+  }
 }
 #buttons {
   position: absolute;

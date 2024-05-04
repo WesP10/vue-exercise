@@ -5,6 +5,7 @@
         <MotivationalQuotes name="Weston"/>
         <BrickGallery :imgs="imgs"/>
         <CardSlider :imgs="imgs"/>
+        <GlassMorphism :imgs="imgs"/>
   </div>
 </template>
 
@@ -14,6 +15,7 @@ import ImageDisplay from '../components/ImageDisplay.vue'
 import ReactionTimer from '../components/ReactionTimer.vue'
 import BrickGallery from '../components/BrickGallery.vue'
 import CardSlider from '../components/CardSlider.vue'
+import GlassMorphism from '../components/GlassMorphism.vue'
 
 export default {
   name: 'App',
@@ -60,7 +62,8 @@ export default {
     ImageDisplay,
     ReactionTimer,
     BrickGallery,
-    CardSlider
+    CardSlider,
+    GlassMorphism
   }
 }
 </script>
