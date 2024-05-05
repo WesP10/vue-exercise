@@ -7,17 +7,19 @@
         <CardSlider :imgs="imgs"/>
         <GlassMorphism :imgs="imgs"/>
         <EightImageWheel :imgs="imgs"/>
+        <ImageSelectorForm :imgs="imgs"/>
   </div>
 </template>
 
 <script>
-import MotivationalQuotes from '../components/MotivationalQuotes.vue'
-import ImageDisplay from '../components/ImageDisplay.vue'
-import ReactionTimer from '../components/ReactionTimer.vue'
-import BrickGallery from '../components/BrickGallery.vue'
-import CardSlider from '../components/CardSlider.vue'
-import GlassMorphism from '../components/GlassMorphism.vue'
-import EightImageWheel from '../components/EightImageWheel.vue'
+import MotivationalQuotes from '@/components/MotivationalQuotes.vue'
+import ImageDisplay from '@/components/ImageDisplay.vue'
+import ReactionTimer from '@/components/ReactionTimer.vue'
+import BrickGallery from '@/components/BrickGallery.vue'
+import CardSlider from '@/components/CardSlider.vue'
+import GlassMorphism from '@/components/GlassMorphism.vue'
+import EightImageWheel from '@/components/EightImageWheel.vue'
+import ImageSelectorForm from '@/components/ImageSelectorForm.vue'
 
 export default {
   name: 'App',
@@ -66,7 +68,8 @@ export default {
     BrickGallery,
     CardSlider,
     GlassMorphism,
-    EightImageWheel
+    EightImageWheel,
+    ImageSelectorForm
   }
 }
 </script>

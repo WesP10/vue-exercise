@@ -28,6 +28,7 @@ export default {
   width: 800px;
   height: 800px;
   position: relative;
+  margin-bottom: 200px;
 }
 #wheel {
   display: flex;
