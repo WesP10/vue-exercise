@@ -1,7 +1,7 @@
 <template>
     <div id="body">
-      <h1>Motivational Quote by {{ name }}</h1>
-      <img :src="images[index]" :alt="images[index]">
+      <h1>Motivational Quotes by {{ name }}</h1>
+      <img :src="imgs[index].src" :alt="imgs[index].alt">
       <p>{{ quotes[index] }}</p>
       <button @click="randIndex()">Click for Next Quote</button>
     </div>
@@ -13,16 +13,6 @@ export default {
   data () {
     return {
       index: 0,
-      images: [
-        require('../assets/BabyWall.jpg'),
-        require('../assets/BrownShoe.jpg'),
-        require('../assets/ChickenCoops.jpg'),
-        require('../assets/FunnySleding.jpg'),
-        require('../assets/GreenGirl.jpg'),
-        require('../assets/Iguana.jpg'),
-        require('../assets/ScreamingApple.jpg'),
-        require('../assets/Tower.jpg')
-      ],
       quotes: [
         'Believe you can, and you’re halfway there.',
         'The only limit to our realization of tomorrow will be our doubts of today.',
@@ -47,7 +37,8 @@ export default {
     this.randIndex()
   },
   props: {
-    name: String
+    name: String,
+    imgs: Array
   }
 }
 </script>

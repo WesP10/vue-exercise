@@ -2,7 +2,7 @@
     <div id="body">
         <ImageDisplay :imgs="imgs"/>
         <ReactionTimer :imgs="imgs"/>
-        <MotivationalQuotes name="Weston"/>
+        <MotivationalQuotes name="Weston" :imgs="imgs"/>
         <BrickGallery :imgs="imgs"/>
         <CardSlider :imgs="imgs"/>
         <GlassMorphism :imgs="imgs"/>

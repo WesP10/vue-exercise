@@ -57,7 +57,7 @@ export default {
         this.timer = setInterval(() => {
           this.score += 10
         }, 10)
-      }, 2500 + Math.random() * 2000)
+      }, 1000 + Math.random() * 2000)
     },
     end (alt) {
       if (alt === this.imgs[this.index].alt) {
