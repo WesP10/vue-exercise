@@ -25,7 +25,7 @@ export default {
   padding: 0;
 }
 #nav {
-  z-index: 100;
+  z-index: 10;
   position: fixed;
   top: 0;
   background-color: #f3f3f3;
@@ -52,7 +52,6 @@ export default {
   font-size: 1.5em;
   font-weight: bold;
 }
-
 Body {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

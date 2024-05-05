@@ -4,7 +4,7 @@
       <div class="swiper-slide card">
         <img :src="imgs[currentSlide].src" :alt="imgs[currentSlide].alt" :key="imgs[currentSlide].src"/>
         <div class="overlay">
-          <span>{{ currentSlide }}</span>
+          <span>{{ currentSlide + 1}}</span>
           <h2>{{ imgs[currentSlide].alt }}</h2>
         </div>
       </div>
@@ -13,7 +13,7 @@
       <div class="swiper-slide prev">
         <img :src="imgs[prev].src" :alt="imgs[prev].alt" :key="imgs[prev].src"/>
         <div class="overlay">
-          <span>{{ prev }}</span>
+          <span>{{ prev + 1}}</span>
           <h2>{{ imgs[prev].alt }}</h2>
         </div>
       </div>
@@ -22,7 +22,7 @@
       <div class="swiper-slide next">
         <img :src="imgs[next].src" :alt="imgs[next].alt" :key="imgs[next].src"/>
         <div class="overlay">
-          <span>{{ next }}</span>
+          <span>{{ next + 1}}</span>
           <h2>{{ imgs[next].alt }}</h2>
         </div>
       </div>
