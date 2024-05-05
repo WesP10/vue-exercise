@@ -79,5 +79,6 @@ export default {
   margin-top: 14dvh;
   display: block;
   text-align: center;
+  margin-bottom: 150px;
 }
 </style>
