@@ -75,6 +75,8 @@ export default {
 }
 #body {
   height: 300px;
+  position: relative;
+  margin-bottom: 200px;
 }
 .swiper-slide {
   position: relative;
@@ -125,8 +127,8 @@ export default {
 #buttons {
   position: absolute;
   width: 400px;
-  top: 480%;
-  left: 50vw;
+  top: 120%;
+  left: 50%;
   transform: translateX(-50%);
 }
 #buttons > button {

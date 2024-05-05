@@ -17,14 +17,14 @@ export default {
 <style scoped>
 #body{
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  height: 50vw;
   gap: 10px;
   overflow: hidden;
   mask: linear-gradient(90deg, transparent, black 15% 85%, transparent);
 }
 #body img {
   width: 25%;
-  height: 50%;
+  aspect-ratio: 16/12;
   object-fit: cover;
   filter: contrast(80%) brightness(80%);
 }
@@ -54,6 +54,11 @@ export default {
   }
   100% {
     transform: translateX(0%) translateY(calc(-200% - 8px));
+  }
+}
+@media (max-width: 600px) {
+  #body img {
+    height: 65vw;
   }
 }
 </style>

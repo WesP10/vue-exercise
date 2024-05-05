@@ -23,12 +23,12 @@ export default {
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 #body {
-  width: 800px;
-  height: 800px;
+  width: 55%;
+  height: fit-content;
   position: relative;
-  margin-bottom: 200px;
 }
 #wheel {
   display: flex;
@@ -141,6 +141,11 @@ img {
   }
   100% {
     transform: translateY(-250px) rotate(360deg);
+  }
+}
+@media (max-width: 800px) {
+  #body {
+    scale: 0.5;
   }
 }
 </style>

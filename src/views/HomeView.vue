@@ -79,6 +79,5 @@ export default {
   margin-top: 14dvh;
   display: block;
   text-align: center;
-  height: calc(100vh - 12vh);
 }
 </style>

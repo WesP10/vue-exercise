@@ -52,12 +52,13 @@ export default {
   justify-content: center;
   align-items: center;
   width: 60%;
-  height: 500px;
+  height: 35vw;
   text-align: center;
   background: linear-gradient(25deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 50%, rgba(255, 255, 255, 0.5) 100%);
   border-radius: 10px;
   box-shadow: 8px 14px 8px rgba(0, 0, 0, 0.4);
   border: 3px solid black;
+  margin-inline: auto;
 }
 #selector {
   display: flex;
@@ -100,7 +101,7 @@ export default {
 }
 #img {
   aspect-ratio: 16/12;
-  height: 500px;
+  height: 35vw;
   object-fit: cover;
   display: block;
   justify-content: center;
@@ -111,6 +112,10 @@ export default {
 @media screen and (max-width: 1200px){
   #form {
     width: 90%;
+    height: 50vw;
+  }
+  #img {
+    height: 50vw;
   }
 }
 </style>
