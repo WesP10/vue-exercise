@@ -2,11 +2,11 @@
   <div id="body">
     <div id="form">
       <div id="selector"> Select Photo:
-        <div v-for="(img, index) in imgs" :key="index" class="option">
+        <div v-for="(img, i) in imgs" :key="i" class="option" @click="changeImage(i)">
           {{ img.alt }}
         </div>
       </div>
-      <img :src="imgs[0].src" :alt="imgs[0].alt" id="img">
+      <img :src="imgs[index].src" :alt="imgs[index].alt" id="img">
     </div>
   </div>
 </template>
@@ -16,6 +16,16 @@ export default {
   name: 'ImageSelectorForm',
   props: {
     imgs: Array
+  },
+  data () {
+    return {
+      index: 0
+    }
+  },
+  methods: {
+    changeImage (i) {
+      this.index = i
+    }
   }
 }
 </script>
@@ -89,7 +99,7 @@ export default {
   border-radius: 10px;
 }
 #img {
-  width: 100%;
+  aspect-ratio: 16/12;
   height: 500px;
   object-fit: cover;
   display: block;
