@@ -6,6 +6,7 @@
         <BrickGallery :imgs="imgs"/>
         <CardSlider :imgs="imgs"/>
         <GlassMorphism :imgs="imgs"/>
+        <EightImageWheel :imgs="imgs"/>
   </div>
 </template>
 
@@ -16,6 +17,7 @@ import ReactionTimer from '../components/ReactionTimer.vue'
 import BrickGallery from '../components/BrickGallery.vue'
 import CardSlider from '../components/CardSlider.vue'
 import GlassMorphism from '../components/GlassMorphism.vue'
+import EightImageWheel from '../components/EightImageWheel.vue'
 
 export default {
   name: 'App',
@@ -40,7 +42,7 @@ export default {
         },
         {
           src: require('../assets/GreenGirl.jpg'),
-          alt: 'GreenGirl'
+          alt: 'Green Girl'
         },
         {
           src: require('../assets/Iguana.jpg'),
@@ -63,7 +65,8 @@ export default {
     ReactionTimer,
     BrickGallery,
     CardSlider,
-    GlassMorphism
+    GlassMorphism,
+    EightImageWheel
   }
 }
 </script>
