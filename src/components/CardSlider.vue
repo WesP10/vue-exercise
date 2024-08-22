@@ -1,32 +1,12 @@
 <template>
   <div id="body">
-    <transition name="slide">
-      <div class="swiper-slide card">
-        <img :src="imgs[currentSlide].src" :alt="imgs[currentSlide].alt" :key="imgs[currentSlide].src"/>
-        <div class="overlay">
-          <span>{{ currentSlide + 1}}</span>
-          <h2>{{ imgs[currentSlide].alt }}</h2>
-        </div>
+    <div v-for="(img, index) in displayedCards" :key="img.alt" class="swiper-slide card">
+      <img :src="img.src" :alt="img.alt" :key="img.src"/>
+      <div class="overlay">
+        <span>{{ indexs[index]}}</span>
+        <h2>{{ img.alt }}</h2>
       </div>
-    </transition>
-    <transition name="slide">
-      <div class="swiper-slide prev">
-        <img :src="imgs[prev].src" :alt="imgs[prev].alt" :key="imgs[prev].src"/>
-        <div class="overlay">
-          <span>{{ prev + 1}}</span>
-          <h2>{{ imgs[prev].alt }}</h2>
-        </div>
-      </div>
-    </transition>
-    <transition name="slide">
-      <div class="swiper-slide next">
-        <img :src="imgs[next].src" :alt="imgs[next].alt" :key="imgs[next].src"/>
-        <div class="overlay">
-          <span>{{ next + 1}}</span>
-          <h2>{{ imgs[next].alt }}</h2>
-        </div>
-      </div>
-    </transition>
+    </div>
     <div id="buttons">
       <button @click="incrSlide(-1)">Previous</button>
       <button @click="incrSlide(1)">Next</button>
@@ -35,6 +15,7 @@
 </template>
 
 <script>
+
 export default {
   name: 'CardSlider',
   props: {
@@ -44,8 +25,14 @@ export default {
     return {
       currentSlide: 0,
       prev: this.imgs.length - 1,
-      next: 1
+      next: 1,
+      indexs: [],
+      displayedCards: []
     }
+  },
+  mounted () {
+    this.displayedCards = [this.imgs[this.currentSlide], this.imgs[this.prev], this.imgs[this.next]]
+    this.indexs = [this.currentSlide + 1, this.prev + 1, this.next + 1]
   },
   methods: {
     incrSlide (incrAmount) {
@@ -58,21 +45,15 @@ export default {
       this.next = this.currentSlide + 1
       if (this.next < 0) this.next = this.imgs.length - 1
       else if (this.next > this.imgs.length - 1) this.next = 0
+
+      this.indexs = [this.currentSlide + 1, this.prev + 1, this.next + 1]
+      this.displayedCards = [this.imgs[this.currentSlide], this.imgs[this.prev], this.imgs[this.next]]
     }
   }
 }
 </script>
 
 <style scoped>
-.slide-enter-active, .slide-leave-active {
-  transition: opacity 0.5s;
-}
-.slide-enter {
-  opacity: 0;
-}
-.slide-leave-to {
-  opacity: 0.5;
-}
 #body {
   height: 300px;
   position: relative;
@@ -84,41 +65,38 @@ export default {
   height: 350px;
   overflow: hidden;
   border-radius: 20px;
-  transition: transform 0.5s forwards;
 }
-.card {
+.card:nth-child(1) {
   z-index: 1;
   animation: slide1 0.5s forwards;
 }
 @keyframes slide1 {
   0% {
-    transform: scale(0.7) translateY(-130%) translateX(-100%);
+    transform: scale(1) translateY(0%) translateX(-100%);
   }
   100% {
     transform: scale(1) translateY(0) translateX(0);
   }
 }
-.next {
-  transform: scale(0.7) translateY(-272%) translateX(-100%);
+.card:nth-child(3) {
   z-index: -1;
   animation: slide2 0.5s forwards;
 }
 @keyframes slide2 {
   0% {
-    transform: scale(0.1) translateY(-80%) translateX(-150%);
+    transform: scale(0.1) translateY(-272%) translateX(-100%);
   }
   100% {
     transform: scale(0.7) translateY(-272%) translateX(-100%);
   }
 }
-.prev {
-  transform: scale(0.7) translateY(-130%) translateX(100%);
+.card:nth-child(2) {
   z-index: -1;
   animation: slide3 0.5s forwards;
 }
 @keyframes slide3 {
   0% {
-    transform: scale(1) translateY(0) translateX(0);
+    transform: scale(0.7) translateY(-130%) translateX(0);
   }
   100% {
     transform: scale(0.7) translateY(-130%) translateX(100%);

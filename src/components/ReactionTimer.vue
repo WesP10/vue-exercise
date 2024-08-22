@@ -7,9 +7,11 @@
         <p v-else-if="answerIndex===2 && !playing">You guessed the wrong photo</p>
         <button @click="start()" :disabled="disabled">Click to Play</button>
       </div>
-      <div v-if="playing" id="pic">
-          <img :src="imgs[index].src" :alt="imgs[index].alt">
-          <div><button v-for="(button, i) in buttons" :key="i" @click="end(button.alt)">{{ button.alt }}</button></div>
+      <div id="parent">
+        <div v-show="playing" id="pic">
+            <img :src="imgs[index].src" :alt="imgs[index].alt">
+            <div><button v-for="(button, i) in buttons" :key="i" @click="end(button.alt)">{{ button.alt }}</button></div>
+        </div>
       </div>
     </div>
 </template>
@@ -95,16 +97,24 @@ export default {
   border-radius: 15px;
   padding: 15px;
 }
+#parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 45vh;
+}
 #pic {
   padding: 15px;
   background-color: #d5d4d4;
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  height: fit-content;
   display: block;
 }
 #pic img {
   max-height: 250px;
+  aspect-ratio: 4/3;
+  border-radius: 15px;
+  box-shadow: 8px 14px 12px 0 rgba(0,0,0,0.2);
 }
 #pic > div {
   width: 100%;
